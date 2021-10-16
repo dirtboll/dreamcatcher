@@ -4,5 +4,9 @@ Source code for a godot game published [here (itch.io)](https://xmaximuskl.itch.
 
 ## Credits  
 Credits in [publish page (itch.io)](https://xmaximuskl.itch.io/dreamcatcher)  
----  
+
+
+---
+
+
 > *"it's just a nightmare"*
