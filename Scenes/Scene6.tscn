@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/LabTileset.tres" type="TileSet" id=3]
+[ext_resource path="res://Scripts/DialogueProcessor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Scene6.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Player2.tscn" type="PackedScene" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 53.3563 )
+
+[node name="Scene6" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -262144, 3, 0, -262140, 4, 0, -65545, 0, 0, -131066, 8, 0, -7, 5, 0, -6, 6, 0, -3, 7, 0, 65527, 2, 1, 65528, 2, 2, 65529, 2, 2, 65530, 2, 2, 65531, 2, 2, 65532, 2, 2, 65533, 2, 2, 65534, 2, 2, 65535, 2, 2, 0, 2, 2, 1, 2, 2, 2, 2, 2, 3, 2, 2, 4, 2, 2, 5, 2, 2, 6, 2, 2, 7, 2, 2, 8, 2, 3 )
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2( 154.406, -38.3105 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
+position = Vector2( -153.516, -37.4906 )
+shape = SubResource( 1 )
+
+[node name="DialogueProcessor" parent="." instance=ExtResource( 4 )]
+
+[node name="Player2" parent="." instance=ExtResource( 6 )]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+z_index = 20
+color = Color( 0, 0, 0, 1 )
+
+[node name="Triggers" type="Node2D" parent="."]

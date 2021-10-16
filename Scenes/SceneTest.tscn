@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/LabTileset.tres" type="TileSet" id=1]
+[ext_resource path="res://Scenes/Player2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/NPCClara.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/NPC/Chika/chika.png" type="Texture" id=4]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="NPCClara" parent="." instance=ExtResource( 3 )]
+position = Vector2( -40.4024, -3.05429 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 65529, 2, 1, 65530, 2, 2, 65531, 2, 2, 65532, 2, 2, 65533, 2, 131077, 65534, 2, 65538, 65535, 2, 65538, 0, 2, 65538, 1, 2, 65538, 2, 2, 65538, 3, 2, 65538, 4, 2, 65538, 5, 2, 65538, 6, 2, 65538, 7, 2, 131076, 8, 2, 2, 9, 2, 2, 10, 2, 2, 11, 2, 2, 12, 2, 2, 13, 2, 2, 14, 2, 2, 15, 2, 2, 16, 2, 2, 17, 2, 2, 18, 2, 2, 19, 2, 2, 20, 2, 2, 21, 2, 2, 22, 2, 2, 23, 2, 2, 24, 2, 2, 25, 2, 2, 26, 2, 2, 27, 2, 2, 28, 2, 2, 29, 2, 2, 30, 2, 2, 31, 2, 2, 32, 2, 2, 33, 2, 2, 34, 2, 2, 35, 2, 131077, 36, 2, 65538, 37, 2, 65538, 38, 2, 65538, 39, 2, 65538, 40, 2, 131076, 41, 2, 2, 42, 2, 2, 43, 2, 2, 44, 2, 3, 131069, 2, 196609, 131070, 2, 196610, 131071, 2, 196610, 65536, 2, 196610, 65537, 2, 196610, 65538, 2, 196610, 65539, 2, 196610, 65540, 2, 196610, 65541, 2, 196610, 65542, 2, 196610, 65543, 2, 196611, 65571, 2, 196609, 65572, 2, 196610, 65573, 2, 196610, 65574, 2, 196610, 65575, 2, 196610, 65576, 2, 196611 )
+
+[node name="Player2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 7.76053, -1.27048 )
+scale = Vector2( 1, 1 )
+
+[node name="chika" type="Sprite" parent="."]
+position = Vector2( -137.804, -39.1468 )
+texture = ExtResource( 4 )

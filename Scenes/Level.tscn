@@ -1,0 +1,152 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/MapGen.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Level.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/SceneTrigger.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/DialogueProcessor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scripts/CanvasModulate.gd" type="Script" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 5.90815
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7.52795, 15.4241 )
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="MapGen" parent="." instance=ExtResource( 1 )]
+tile_data = PoolIntArray(  )
+mob_spawners = {
+Vector2( 36, 36 ): {
+"cell": 14,
+"i": 0,
+"mpos": Vector2( 4, 4 )
+},
+Vector2( 44, 492 ): {
+"cell": 14,
+"i": 0,
+"mpos": Vector2( 5, 61 )
+},
+Vector2( 52, 284 ): {
+"cell": 14,
+"i": 0,
+"mpos": Vector2( 6, 35 )
+},
+Vector2( 116, 236 ): {
+"cell": 14,
+"i": 0,
+"mpos": Vector2( 14, 29 )
+},
+Vector2( 188, 28 ): {
+"cell": 14,
+"i": 0,
+"mpos": Vector2( 23, 3 )
+},
+Vector2( 188, 284 ): {
+"cell": 14,
+"i": 0,
+"mpos": Vector2( 23, 35 )
+},
+Vector2( 196, 196 ): {
+"cell": 14,
+"i": 0,
+"mpos": Vector2( 24, 24 )
+},
+Vector2( 244, 492 ): {
+"cell": 14,
+"i": 0,
+"mpos": Vector2( 30, 61 )
+},
+Vector2( 300, 364 ): {
+"cell": 14,
+"i": 0,
+"mpos": Vector2( 37, 45 )
+},
+Vector2( 308, 156 ): {
+"cell": 14,
+"i": 0,
+"mpos": Vector2( 38, 19 )
+},
+Vector2( 372, 108 ): {
+"cell": 14,
+"i": 0,
+"mpos": Vector2( 46, 13 )
+},
+Vector2( 372, 492 ): {
+"cell": 14,
+"i": 0,
+"mpos": Vector2( 46, 61 )
+},
+Vector2( 396, 68 ): {
+"cell": 14,
+"i": 0,
+"mpos": Vector2( 49, 8 )
+},
+Vector2( 420, 284 ): {
+"cell": 14,
+"i": 0,
+"mpos": Vector2( 52, 35 )
+},
+Vector2( 428, 492 ): {
+"cell": 14,
+"i": 0,
+"mpos": Vector2( 53, 61 )
+},
+Vector2( 436, 156 ): {
+"cell": 14,
+"i": 0,
+"mpos": Vector2( 54, 19 )
+},
+Vector2( 548, 196 ): {
+"cell": 14,
+"i": 0,
+"mpos": Vector2( 68, 24 )
+},
+Vector2( 548, 420 ): {
+"cell": 14,
+"i": 0,
+"mpos": Vector2( 68, 52 )
+},
+Vector2( 556, 76 ): {
+"cell": 14,
+"i": 0,
+"mpos": Vector2( 69, 9 )
+},
+Vector2( 564, 284 ): {
+"cell": 19,
+"i": 1,
+"mpos": Vector2( 70, 35 )
+}
+}
+end_pos = Vector2( 320, 576 )
+
+[node name="SpawnArea" type="Area2D" parent="."]
+position = Vector2( 365, 111 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
+shape = SubResource( 1 )
+
+[node name="EndArea" type="StaticBody2D" parent="."]
+position = Vector2( 320, 576 )
+collision_layer = 64
+collision_mask = 0
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndArea"]
+shape = SubResource( 2 )
+
+[node name="PinPos" type="Node2D" parent="EndArea"]
+position = Vector2( 0, -19.0214 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 365, 111 )
+z_index = 10
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+z_index = 20
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 6 )
+
+[node name="DialogueProcessor" parent="." instance=ExtResource( 5 )]

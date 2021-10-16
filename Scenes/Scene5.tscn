@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/Scene5.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/SceneTrigger.gd" type="Script" id=2]
+[ext_resource path="res://Assets/light.png" type="Texture" id=3]
+[ext_resource path="res://Assets/LabTileset.tres" type="TileSet" id=4]
+[ext_resource path="res://Scenes/NPCClara.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scripts/DialogueProcessor.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Player2.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 53.3563 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 5.8847, 28.9439 )
+
+[node name="Scene5" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -262144, 3, 0, -262140, 4, 0, -65545, 0, 0, -131066, 8, 0, -7, 5, 0, -6, 6, 0, -3, 7, 0, 65527, 2, 1, 65528, 2, 2, 65529, 2, 2, 65530, 2, 2, 65531, 2, 2, 65532, 2, 2, 65533, 2, 2, 65534, 2, 2, 65535, 2, 2, 0, 2, 2, 1, 2, 2, 2, 2, 2, 3, 2, 2, 4, 2, 2, 5, 2, 2, 6, 2, 2, 7, 2, 2, 8, 2, 3 )
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2( 154.406, -38.3105 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
+position = Vector2( -153.516, -37.4906 )
+shape = SubResource( 1 )
+
+[node name="DialogueProcessor" parent="." instance=ExtResource( 6 )]
+
+[node name="Lights" type="Node2D" parent="."]
+
+[node name="Light2D2" type="Light2D" parent="Lights"]
+position = Vector2( 10.1341, -91.3906 )
+scale = Vector2( 0.850774, 0.983207 )
+texture = ExtResource( 3 )
+energy = 1.1
+mode = 2
+shadow_enabled = true
+shadow_gradient_length = 50.0
+shadow_filter = 3
+shadow_filter_smooth = 64.0
+
+[node name="Light2D" type="Light2D" parent="Lights"]
+position = Vector2( -143.236, -55.229 )
+scale = Vector2( 0.727653, 0.727653 )
+texture = ExtResource( 3 )
+energy = 1.1
+mode = 2
+shadow_enabled = true
+shadow_gradient_length = 50.0
+shadow_filter = 3
+shadow_filter_smooth = 64.0
+
+[node name="Light2D3" type="Light2D" parent="Lights"]
+position = Vector2( 132.318, -91.7727 )
+scale = Vector2( 0.836289, 0.836289 )
+texture = ExtResource( 3 )
+energy = 1.1
+mode = 2
+shadow_enabled = true
+shadow_gradient_length = 50.0
+shadow_filter = 3
+shadow_filter_smooth = 64.0
+
+[node name="Player2" parent="." instance=ExtResource( 7 )]
+
+[node name="NPCClara" parent="." instance=ExtResource( 5 )]
+position = Vector2( -101.114, 0 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+z_index = 20
+color = Color( 0, 0, 0, 1 )
+
+[node name="Triggers" type="Node2D" parent="."]
+
+[node name="LevelTrigger" type="StaticBody2D" parent="Triggers"]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/LevelTrigger"]
+position = Vector2( 16.2757, -29.7452 )
+shape = SubResource( 2 )
+
+[node name="PinPos" type="Node2D" parent="Triggers/LevelTrigger"]
+position = Vector2( 15.7832, -65.2114 )
