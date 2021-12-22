@@ -2,7 +2,7 @@ tool
 extends Node2D
 
 var difficulty = Global.difficulty
-var mob_spawn_cd = 1
+var mob_spawn_cd = 0.5
 var mob_cap_mult = 4
 var mob_cap_max = 30
 var mob_cap = clamp(mob_cap_mult * (difficulty * 2), 1, mob_cap_max)
@@ -45,7 +45,7 @@ func _ready():
 	add_child(timer_spawn)
 	timer_spawn.start(mob_spawn_cd)
 
-	despawn_area.connect("body_exited", self, "despawn_mob")
+	spawn_trigger.connect("area_exited", self, "despawn_mob")
 
 	player_spawn_area.position = map.spawn_pos
 	end_area.position = map.end_pos
@@ -83,26 +83,22 @@ func spawn_mobs():
 		while i < len(spawner_areas):
 			var spawner_area = spawner_areas[i]
 			i += 1
-			if spawner_area.overlaps_area(spawn_ignore):
-				continue
-			spawner_filtered.append(spawner_area)
-			
-		
+			if (not spawner_area.overlaps_area(spawn_ignore)) and "node_name" in spawner_area and spawner_area.node_name == "MobSpawner":
+				spawner_filtered.append(spawner_area)
 		var spawner_area = _rand_choose(spawner_filtered)
 		if spawner_area != null:
 			var spawner = mob_spawners[spawner_area]
 			var mob = mobs[spawner.i].instance()
-			mob.position = spawner_area.position
 			add_child(mob)
+			mob.position = spawner_area.position
 			mob_num += 1
 			spawned_mobs[mob] = "ehe"
-		else:
-			spawner_areas.remove(spawner_area)
 	
 func despawn_mob(node: Node2D):
-	if spawned_mobs.erase(node):
+	var parent = node.get_parent()
+	if spawned_mobs.erase(parent):
 		mob_num -= 1
-		node.queue_free()
+		parent.queue_free()
 
 func player_death():
 	Global.deaths += 1

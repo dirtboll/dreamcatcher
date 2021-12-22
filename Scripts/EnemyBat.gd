@@ -4,20 +4,32 @@ extends KinematicBody2D
 enum {
 	IDLE,
 	CHASE,
-	ATTACK
+	ATTACK,
+	STAGGER
 }
 var state = IDLE
 
 #Physics
-var speed = 75.0
+var speed = 60.0
 var acceleration = 200.0
 var velocity = Vector2()
 
 #Mechanic
-export (float) var health = 20.0
-export (float) var damage = 5.0
+export (float) var min_health = 10.0
+export (float) var max_health = 20.0
+export (float) var max_damage = 10.0
+export (float) var min_damage = 3.0
 export (int) var search_cd = 0.5
 export (int) var attack_passive_cd = 1
+
+export (float) var max_stagger_time = 2.0
+export (float) var min_stagger_time = 1.5
+export (float) var min_speed = 60.0
+export (float) var max_speed = 75.0
+
+var health = 20.0
+var damage = 5.0
+var stagger_time = 1.3
 var target_entity_area = null
 
 #Animation
@@ -31,7 +43,6 @@ onready var attack_passive_area = $PassiveAttackArea
 onready var detect_area = $DetectArea
 onready var timer_search = Timer.new()
 onready var timer_attack_passive = Timer.new()
-
 onready var parent = get_parent()
 
 func _ready():
@@ -41,6 +52,13 @@ func _ready():
 	add_child(timer_attack_passive)
 	timer_search.start(search_cd)
 	timer_attack_passive.start(attack_passive_cd)
+
+	var diff_ratio = Global.difficulty/Global.max_difficulty
+	speed = lerp(min_speed, max_speed, diff_ratio)
+	damage = lerp(max_damage, min_damage, diff_ratio)
+	stagger_time = lerp(max_stagger_time, min_stagger_time, diff_ratio)
+	health = lerp(min_health, max_health, diff_ratio)
+
 
 func _process(_delta):
 	if is_dead(): return
@@ -113,6 +131,8 @@ func hit(dmg, hitter):
 		var is_right = position.x > hitter.position.x
 		var dir = int(is_right) * 2 - 1
 		velocity.x = dir * 50
+		timer_search.start(stagger_time)
+		state = IDLE
 		
 
 func death():

@@ -17,7 +17,6 @@ extents = Vector2( 7.52795, 15.4241 )
 script = ExtResource( 2 )
 
 [node name="MapGen" parent="." instance=ExtResource( 1 )]
-tile_data = PoolIntArray(  )
 mob_spawners = {
 Vector2( 36, 36 ): {
 "cell": 14,
@@ -123,7 +122,7 @@ Vector2( 564, 284 ): {
 end_pos = Vector2( 320, 576 )
 
 [node name="SpawnArea" type="Area2D" parent="."]
-position = Vector2( 365, 111 )
+position = Vector2( 365, 110 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
 shape = SubResource( 1 )
