@@ -37,6 +37,7 @@ onready var main_coll: CollisionShape2D 	= $MainCollission
 onready var health_indicator: TextureRect 	= $Camera2D/HealthIndicator
 onready var interact_area: Area2D			= $InterractArea
 onready var pin_bubble_npc: AnimatedSprite  = $PinBubbleNPC
+onready var camera							:= $Camera2D
 onready var pin_bubble_npc_refresh_timer: Timer	= Timer.new()
 
 func _ready():

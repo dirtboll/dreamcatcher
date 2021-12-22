@@ -4,6 +4,8 @@ signal dialogue_finished()
 signal dialogue_skipped()
 signal dialogue_closed()
 
+var interactable = false
+
 onready var char_time: Timer 	= $Timer
 onready var dia_label: Label 	= $DialogueFrame/Dialogue
 onready var name_label: Label 	= $NameFrame/Name
@@ -13,13 +15,14 @@ func _process(_delta):
 		close_dialogue()
 
 func close_dialogue():
-	if not char_time.is_stopped():
-		char_time.stop()
-		dia_label.visible_characters = len(dia_label.text)
-		emit_signal("dialogue_skipped")
-	elif self.visible:
-		self.visible = false
-		emit_signal("dialogue_closed")
+	if interactable:
+		if not char_time.is_stopped():
+			char_time.stop()
+			dia_label.visible_characters = len(dia_label.text)
+			emit_signal("dialogue_skipped")
+		elif self.visible:
+			self.visible = false
+			emit_signal("dialogue_closed")
 
 func start_dialogue(di_name: String, dia: String):
 	char_time.stop()

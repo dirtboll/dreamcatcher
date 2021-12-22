@@ -29,9 +29,6 @@ onready var text_rect 				= $Player2Rect
 onready var dia_luna = Global.dialogue_json[name]["NPCLuna"]
 
 func _ready():
-	player.camera.zoom = Vector2(0.3,0.3)
-	player.speed *= 1.2
-	player.light.dim()
 	if dialogue_box != null:
 		start_act(ACT1)
 	npc_luna.interactable = true
@@ -50,6 +47,10 @@ func finish():
 	level_trigger.interactable = false
 	npc_luna.interactable = false
 	text_rect.dim()
+	text_rect.connect("done", self, "transition_finish")
+
+func transition_finish():
+	game.trans_scene_progress("EndCredit")
 
 func start_act(act: int):
 	state = act

@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/light.png" type="Texture" id=2]
 [ext_resource path="res://Assets/LabTileset.tres" type="TileSet" id=3]
 [ext_resource path="res://Scripts/DialogueProcessor.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Player2.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/NPCLuna.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/Scene7.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/Player2Rect.gd" type="Script" id=8]
@@ -22,7 +22,7 @@ script = ExtResource( 7 )
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( -196609, 3, 0, 65527, 2, 1, 65528, 2, 2, 65529, 2, 2, 65530, 2, 2, 65531, 2, 2, 65532, 2, 2, 65533, 2, 2, 65534, 2, 2, 65535, 2, 2, 0, 2, 2, 1, 2, 2, 2, 2, 2, 3, 2, 2, 4, 2, 2, 5, 2, 2, 6, 2, 2, 7, 2, 2, 8, 2, 3 )
+tile_data = PoolIntArray( -196616, 3, 0, 65527, 2, 1, 65528, 2, 2, 65529, 2, 2, 65530, 2, 2, 65531, 2, 2, 65532, 2, 2, 65533, 2, 2, 65534, 2, 2, 65535, 2, 2, 0, 2, 2, 1, 2, 2, 2, 2, 2, 3, 2, 2, 4, 2, 2, 5, 2, 2, 6, 2, 2, 7, 2, 2, 8, 2, 3 )
 
 [node name="Walls" type="StaticBody2D" parent="."]
 
@@ -71,10 +71,6 @@ shadow_gradient_length = 50.0
 shadow_filter = 3
 shadow_filter_smooth = 64.0
 
-[node name="Player2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 41.189, 0.176773 )
-scale = Vector2( 1.75, 1.75 )
-
 [node name="NPCLuna" parent="." instance=ExtResource( 6 )]
 position = Vector2( 133.842, -0.159664 )
 
@@ -83,6 +79,7 @@ z_index = 20
 color = Color( 0, 0, 0, 1 )
 
 [node name="Triggers" type="Node2D" parent="."]
+position = Vector2( -111.222, -0.276672 )
 
 [node name="LevelTrigger" type="StaticBody2D" parent="Triggers"]
 collision_layer = 64
@@ -94,13 +91,15 @@ position = Vector2( -1.2091, -28.4853 )
 shape = SubResource( 2 )
 
 [node name="PinPos" type="Node2D" parent="Triggers/LevelTrigger"]
-position = Vector2( 15.7832, -65.2114 )
+position = Vector2( -0.244906, -63.5242 )
+
+[node name="Player2" parent="." instance=ExtResource( 5 )]
 
 [node name="Player2Rect" type="ColorRect" parent="."]
-margin_left = -257.0
-margin_top = -170.0
-margin_right = 258.0
-margin_bottom = 168.0
+margin_left = -267.613
+margin_top = -174.082
+margin_right = 247.387
+margin_bottom = 163.918
 color = Color( 0, 0, 0, 0 )
 script = ExtResource( 8 )
 __meta__ = {
