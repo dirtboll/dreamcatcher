@@ -251,7 +251,7 @@
             ["Luna", "so currently, you're stuck in your own mind because of the sentient intelligence", 0.1, 1],
             ["Luna", "which is still taking over the sandbox and blocking you from gaining your own consciousness", 0.1, 1],
             ["Luna", "and me", 0.1, 1],
-            ["Luna", "well, you see, last time i talk to chika, she's trying to fix the machine", 0.1, 1],
+            ["Luna", "well, you see, last time i talk to Chika, she's trying to fix the machine", 0.1, 1],
             ["Luna", "and clara was trying her best to seek experts, which is actually do gain attraction one media because this is a first thing", 0.1, 1],
             ["Luna", "first thing to stuck someone in a dream world", 0.1, 1],
             ["Luna", "and me", 0.1, 1],
@@ -273,12 +273,13 @@
             ["Luna", "still, I'm stuck here, with you", 0.1, 1],
             ["Luna", "your fault", 0.1, 1],
             ["Luna", "but hey, you shouldn't think that much", 0.1, 1],
-            ["Luna", "you know, these phrases always calms you", 0.1, 1],
-            ["Luna", "it's just a nightmare", 0.1, 1],
-            ["Luna", "and you shouldn't worry that", 0.1, 1],
-            ["Luna", "because I'm always be here for you", 0.1, 1],
-            ["Luna", "as your Dreamcatcher", 0.1, 1],
-            ["Luna", "take care darling", 0.1, 1]
+            ["Luna", "It's ok, take your time, you can get back to the capsule to rest when you like to.", 0.1, 1],
+            ["Luna", "...", 0.1, 1],
+            ["Luna", "...", 0.1, 1],
+            ["Luna", "That means you've been so annoying that used to it.", 0.1, 1],
+            ["Luna", "...", 0.1, 1],
+            ["Luna", "Ok, I'm not gonna talk to you until you wake up again. Get in the capsule.", 0.1, 1],
+            ["Luna", "...", 0.1, 1]
         ]
     },
     "Level1": {

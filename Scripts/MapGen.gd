@@ -254,6 +254,8 @@ func _get_dist_diff() -> Dictionary:
 			continue
 		if not(tile in [10,9,8]):
 			tile_dist[tile] = _chance_from_diff(tile_dist[tile])
+		else:
+			tile_dist[tile] = lerp(tile_dist[tile], 0.1, Global.difficulty/Global.max_difficulty)
 	return tile_dist
 
 

@@ -4,7 +4,7 @@ onready var viewport = $ViewportContainer/Viewport
 onready var dialogue_box = $DialogueBox
 
 func _ready():
-	trans_scene_progress(Global.get_the_scene())
+	_trans_scene(Global.get_the_scene())
 
 func _trans_scene(path: String):
 	for node in viewport.get_children():
@@ -14,8 +14,8 @@ func _trans_scene(path: String):
 	viewport.add_child(load(path).instance())
 
 func trans_scene_progress(path: String):
-	_trans_scene(path)
 	Global.current_scene = path
+	_trans_scene(Global.get_the_scene())
 
 func trans_scene_level():
 	_trans_scene("res://Scenes/Level.tscn")

@@ -9,6 +9,7 @@ const DIFF_TO_SCENE = {
 }
 var deaths = 0
 var difficulty = 1
+var max_difficulty = 20
 var current_scene = "Scene1"
 var dia_auto_end_time = 3
 onready var file = File.new()
